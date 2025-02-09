@@ -1,0 +1,33 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - new  # Change this to your target branch if different
+
+permissions:
+  contents: write  # Allow write access to repository contents
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./  # Adjust if your package.json is in a subdirectory
+
+      - name: Build Project
+        run: npm run build
+        working-directory: ./  # Adjust if necessary
+
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: main  # Change this if your target branch is different
+          FOLDER: dist  # Adjust to the folder you want to publish
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}  # Ensure you have this in your secrets
