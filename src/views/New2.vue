@@ -1,5 +1,5 @@
 <template>
-<router-view/> 
+<h1>Hello from next page</h1>  
 </template>
 
 <script>
