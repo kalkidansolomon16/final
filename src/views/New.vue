@@ -1,6 +1,5 @@
 <template>
-<h1>Hello from vue</h1>
-<router-link to="New2">Go to next Page</router-link>  
+<h1>Hello This message is from front end team</h1>
 </template>
 
 <script>
